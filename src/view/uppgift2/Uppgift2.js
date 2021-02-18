@@ -1,11 +1,11 @@
-import React from 'react'
-
+import {useState} from "react"
 export const Uppgift2 = () => {
+	const [valfritt, setValfritt] = useState("(värdet av ditt state skall synas i denna tag)")
 	return (
 		<div>
 			<h1>Uppgift 2</h1>
-			<h2>(värdet av ditt state skall synas i denna tag)</h2>
-			<input placeholder="Denna input skall uppdatera värdet som matas in till ditt state" />
+			<h2>{valfritt}</h2>
+			<input placeholder="Denna input skall uppdatera värdet som matas in till ditt state" onChange={(event) => setValfritt(event.target.value) } />
 		</div>
 	)
 }

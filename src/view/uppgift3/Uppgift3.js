@@ -1,37 +1,54 @@
-import React from 'react'
-import StarwarsService from '../../shared/api/service/StarwarsService'
-
+import { useState, useEffect } from "react";
+import StarwarsService from "../../shared/api/service/StarwarsService";
 export const Uppgift3 = () => {
-	const character = undefined
-	const count = 1
+  // const character = undefined
+  // const count = 1
+  const [character, setCharacter] = useState([]);
+  const [count, setCount] = useState(1);
 
-	const getCharacterNameFromStarwarsAPI = async () => {
-		const { data } = await StarwarsService.getStarwarsCharacter(count)
-	}
+  const getCharacterNameFromStarwarsAPI = async () => {
+    const { data } = await StarwarsService.getStarwarsCharacter(count);
+    setCharacter(data);
+  };
 
-	const buttons = () => {
-		return <div>
-			<button>Increment</button> <br />
-			<button>Decrement</button>
-		</div>
-	}
+  useEffect(() => {
+    getCharacterNameFromStarwarsAPI();
+  }, [count]);
 
-	const displayCharacterName = () => {
-		if (character || undefined) {
-			return <div>
-				<h2>{(character || undefined)?.name}</h2>
-			</div>
-		}
-	}
 
-	return (
-		<div>
-			<h1>Uppgift 3</h1>
-			{displayCharacterName()}
-			{buttons()}
-		</div>
-	)
-}
+
+  const buttons = () => {
+    const onClickHandler = (inNumber) =>{
+      (count + inNumber) > 0 ? setCount(count + inNumber) : setCount(1)
+    }
+    return (
+      <div>
+        <button onClick={()=>onClickHandler(1)}>Increment</button> <br />
+        <button onClick={()=>onClickHandler(-1)}>Decrement</button>
+      </div>
+    );
+  };
+
+  const displayCharacterName = () => {
+    if (character || undefined) {
+      return (
+        <div>
+          <h2>{(character || undefined)?.name}</h2>
+        </div>
+      );
+    }
+  };
+
+
+
+  return (
+    <div>
+      <h1>Uppgift 3</h1>
+      {displayCharacterName()}
+      {buttons()}
+    </div>
+  );
+};
 
 /*
 

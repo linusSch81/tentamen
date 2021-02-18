@@ -1,9 +1,9 @@
-import React from 'react'
-
+import {Introduktion} from "../../components/Introduktion"
 export const Uppgift1 = () => {
 	return (
 		<div>
 			<h1>Uppgift 1</h1>
+			<Introduktion fornamn="Linus" efternamn="Schölander" kurs="JavaScript fullstack" />
 		</div>
 	)
 }
@@ -15,4 +15,4 @@ INSTRUKTIONER FÖR UPPGIFT 1:
 	2. Du kommer behöva skicka med 3 prop värden(fornamn, efternamn, kurs) till Introduktion.js komponenten som är lokaliserad i src/components/
 	3. Dessa värden skall synas i http://localhost:PORT/uppgift1 fliken.
 
- */
+	*/
